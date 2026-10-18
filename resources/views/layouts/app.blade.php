@@ -141,9 +141,6 @@
                         <a href="{{ route('users.index') }}" class="{{ request()->routeIs('users.*') ? 'active' : '' }}">
                             <i class="fas fa-user-cog"></i> Users
                         </a>
-                        <a href="{{ route('users.task-access') }}" class="{{ request()->routeIs('users.task-access') ? 'active' : '' }}">
-                            <i class="fas fa-user-cog"></i> Task Access
-                        </a>
                         <a href="{{ route('activity-logs.index') }}" class="{{ request()->routeIs('activity-logs.*') ? 'active' : '' }}">
                             <i class="fas fa-history"></i> Activity Logs
                         </a>
@@ -153,14 +150,6 @@
                     @endif
                     
                     <div class="mt-3 px-3 small fw-bold text-danger">ACCOUNT</div>
-                    
-                    @auth
-                        @if(auth()->user()->canAccessTasks())
-                            <a href="{{ route('tasks.workspace') }}" class="{{ request()->routeIs('tasks.*') ? 'active' : '' }}">
-                                <i class="fas fa-tasks"></i> Workspace
-                            </a>
-                        @endif
-                    @endauth
                     
                     <a href="{{ route('password.change') }}">
                         <i class="fas fa-key"></i> Change Password
