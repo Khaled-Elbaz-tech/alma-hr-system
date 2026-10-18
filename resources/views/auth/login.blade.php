@@ -33,18 +33,15 @@
             width: 100%;
         }
         .login-header {
-            padding: 36px 36px 28px;
+            padding: 34px 36px 26px;
             text-align: center;
-            border-bottom: 1px solid #F3F4F6;
+            background: linear-gradient(135deg, var(--alma-darker) 0%, var(--alma-dark) 60%, var(--alma) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
-        .login-mark {
-            width: 62px; height: 62px;
-            margin-bottom: 16px;
-            border-radius: 50%;
-            box-shadow: 0 4px 14px rgba(139,37,30,.25);
-        }
-        .login-header h4 { font-weight: 800; margin: 0; color: #1F2937; letter-spacing: .5px; }
-        .login-header p { color: var(--gray-500); font-size: 13px; margin: 6px 0 0; letter-spacing: 2px; }
+        .login-header p { color: rgba(255,255,255,.7); font-size: 11.5px; margin: 0; letter-spacing: 3px; font-weight: 600; }
         .login-body { padding: 32px 36px 36px; }
         .form-label { font-weight: 600; font-size: 13.5px; color: #374151; }
         .form-control {
@@ -75,12 +72,8 @@
 <body>
     <div class="login-container">
         <div class="login-header">
-            <svg class="login-mark" viewBox="0 0 40 40" aria-label="Alma">
-            <circle cx="20" cy="20" r="20" fill="#D42B1E"/>
-            <path d="M20 8 L33 34 H26.5 L20 18.5 L13.5 34 H7 Z" fill="#fff"/>
-        </svg>
-            <h4>ALMA HR</h4>
-            <p>HUMAN RESOURCES</p>
+            @include('partials.alma-logo', ['height' => 52])
+            <p>HR SYSTEM</p>
         </div>
         <div class="login-body">
             @if($errors->any())

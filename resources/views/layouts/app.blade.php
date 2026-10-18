@@ -36,20 +36,14 @@
             color: #fff;
         }
         .sidebar .brand {
-            padding: 22px 18px;
+            padding: 20px 18px 16px;
             border-bottom: 1px solid rgba(255,255,255,.14);
             display: flex;
-            align-items: center;
-            gap: 12px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
         }
-        .sidebar .brand-mark {
-            width: 40px; height: 40px;
-            flex-shrink: 0;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,.25);
-        }
-        .sidebar .brand-name { font-weight: 700; font-size: 16px; letter-spacing: .5px; }
-        .sidebar .brand-sub { font-size: 11px; color: rgba(255,255,255,.65); letter-spacing: 1.5px; }
+        .sidebar .brand-sub { font-size: 10.5px; color: rgba(255,255,255,.6); letter-spacing: 2.5px; font-weight: 600; }
         .sidebar nav { padding: 10px; }
         .sidebar a {
             color: rgba(255,255,255,.82);
@@ -228,14 +222,8 @@
             <!-- Sidebar -->
             <div class="col-md-2 sidebar p-0">
                 <div class="brand">
-                    <svg class="brand-mark" viewBox="0 0 40 40" aria-label="Alma">
-                        <circle cx="20" cy="20" r="20" fill="#D42B1E"/>
-                        <path d="M20 8 L33 34 H26.5 L20 18.5 L13.5 34 H7 Z" fill="#fff"/>
-                    </svg>
-                    <div>
-                        <div class="brand-name">ALMA HR</div>
-                        <div class="brand-sub">HUMAN RESOURCES</div>
-                    </div>
+                    @include('partials.alma-logo', ['height' => 38])
+                    <div class="brand-sub">HR SYSTEM</div>
                 </div>
                 <nav>
                     <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">

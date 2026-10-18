@@ -61,8 +61,17 @@
                     <form action="{{ route('departments.destroy', $department) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Deactivate this department?')">
+                        <button type="submit" class="btn btn-sm btn-secondary" onclick="return confirm('Deactivate this department?')">
                             <i class="fas fa-ban"></i> Deactivate
+                        </button>
+                    </form>
+                    @endif
+                    @if($department->employees_count == 0)
+                    <form action="{{ route('departments.force-delete', $department) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Permanently DELETE this department? This cannot be undone.')">
+                            <i class="fas fa-trash"></i> Delete
                         </button>
                     </form>
                     @endif
