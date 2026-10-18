@@ -64,16 +64,9 @@
         </div>
     </div>
     <div class="col-md-3">
-        <div class="card bg-warning text-white">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <p class="mb-0">Total Rejected</p>
-                        <h3>{{ collect($monthlyStats)->sum('rejected') }}</h3>
-                    </div>
-                    <i class="fas fa-times-circle fa-2x opacity-50"></i>
-                </div>
-            </div>
+        <div class="stat-card">
+            <div class="stat-icon slate"><i class="fas fa-times-circle"></i></div>
+            <div><div class="stat-num">{{ collect($monthlyStats)->sum('rejected') }}</div><div class="stat-lbl">Total Rejected</div></div>
         </div>
     </div>
 </div>
