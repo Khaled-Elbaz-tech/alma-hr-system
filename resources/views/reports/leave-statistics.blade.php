@@ -100,19 +100,35 @@
                         </thead>
                         <tbody>
                             @php $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; @endphp
+                            @php
+                                $monthMax = 1;
+                                foreach(range(1,12) as $mm) {
+                                    $mt = ($monthlyStats[$mm]['approved'] ?? 0) + ($monthlyStats[$mm]['rejected'] ?? 0) + ($monthlyStats[$mm]['pending'] ?? 0);
+                                    if ($mt > $monthMax) $monthMax = $mt;
+                                }
+                            @endphp
                             @for($m = 1; $m <= 12; $m++)
-                            @php $total = $monthlyStats[$m]['total'] ?? 0; $max = 20; $width = min(($total / $max) * 100, 100); @endphp
+                            @php
+                                $ma = $monthlyStats[$m]['approved'] ?? 0;
+                                $mr = $monthlyStats[$m]['rejected'] ?? 0;
+                                $mp = $monthlyStats[$m]['pending'] ?? 0;
+                                $mtotal = $ma + $mr + $mp;
+                            @endphp
                             <tr>
                                 <td>{{ $months[$m-1] }}</td>
                                 <td>
-                                    <span class="badge bg-success">{{ $monthlyStats[$m]['approved'] ?? 0 }}</span>
+                                    <span class="badge bg-success">{{ $ma }}</span>
                                 </td>
-                                <td>
-                                    <div class="progress" style="height: 20px;">
-                                        <div class="progress-bar bg-success" style="width: {{ (($monthlyStats[$m]['approved'] ?? 0) / $max) * 100 }}%"></div>
-                                        <div class="progress-bar bg-danger" style="width: {{ (($monthlyStats[$m]['rejected'] ?? 0) / $max) * 100 }}%"></div>
-                                        <div class="progress-bar bg-warning" style="width: {{ (($monthlyStats[$m]['pending'] ?? 0) / $max) * 100 }}%"></div>
+                                <td style="min-width: 160px;">
+                                    @if($mtotal > 0)
+                                    <div class="progress" style="height: 18px; border-radius: 9px; background: #F3F4F6;">
+                                        <div class="progress-bar" style="width: {{ ($ma/$monthMax)*100 }}%; background: #15803D;" title="Approved: {{ $ma }}"></div>
+                                        <div class="progress-bar" style="width: {{ ($mr/$monthMax)*100 }}%; background: #B91C1C;" title="Rejected: {{ $mr }}"></div>
+                                        <div class="progress-bar" style="width: {{ ($mp/$monthMax)*100 }}%; background: #D97706;" title="Pending: {{ $mp }}"></div>
                                     </div>
+                                    @else
+                                    <span class="text-muted small">&mdash;</span>
+                                    @endif
                                 </td>
                                 <td>
                                     <span class="badge bg-danger">{{ $monthlyStats[$m]['rejected'] ?? 0 }}</span>

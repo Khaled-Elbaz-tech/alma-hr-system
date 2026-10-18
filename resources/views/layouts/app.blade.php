@@ -270,7 +270,7 @@
                             <i class="fas fa-chart-pie"></i> Department
                         </a>
                         <a href="{{ route('reports.employee') }}" class="{{ request()->routeIs('reports.employee') ? 'active' : '' }}">
-                            <i class="fas fa-user-chart"></i> Employee
+                            <i class="fas fa-chart-user"></i> Employee
                         </a>
                         <a href="{{ route('reports.leave-statistics') }}" class="{{ request()->routeIs('reports.leave-statistics') ? 'active' : '' }}">
                             <i class="fas fa-chart-line"></i> Statistics
