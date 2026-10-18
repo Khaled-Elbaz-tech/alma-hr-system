@@ -282,13 +282,14 @@ class ReportsController extends Controller
         $year = $request->year;
         
         $query = Employee::with(['user', 'department'])
-            ->where('employment_status', 'active');
+            ->where('employees.employment_status', 'active')
+            ->join('users', 'employees.user_id', '=', 'users.id');
         
         if ($departmentId) {
-            $query->where('department_id', $departmentId);
+            $query->where('employees.department_id', $departmentId);
         }
         
-        $employees = $query->orderBy('users.name')->get();
+        $employees = $query->orderBy('users.name')->get(['employees.*']);
         $departments = Department::where('is_active', true)->get();
         
         $reportData = collect();
