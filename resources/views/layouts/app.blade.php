@@ -42,14 +42,11 @@
             align-items: center;
             gap: 12px;
         }
-        .sidebar .brand-badge {
+        .sidebar .brand-mark {
             width: 40px; height: 40px;
-            background: #fff;
-            color: var(--alma);
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 20px;
             flex-shrink: 0;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,.25);
         }
         .sidebar .brand-name { font-weight: 700; font-size: 16px; letter-spacing: .5px; }
         .sidebar .brand-sub { font-size: 11px; color: rgba(255,255,255,.65); letter-spacing: 1.5px; }
@@ -231,7 +228,10 @@
             <!-- Sidebar -->
             <div class="col-md-2 sidebar p-0">
                 <div class="brand">
-                    <div class="brand-badge">A</div>
+                    <svg class="brand-mark" viewBox="0 0 40 40" aria-label="Alma">
+                        <circle cx="20" cy="20" r="20" fill="#D42B1E"/>
+                        <path d="M20 8 L33 34 H26.5 L20 18.5 L13.5 34 H7 Z" fill="#fff"/>
+                    </svg>
                     <div>
                         <div class="brand-name">ALMA HR</div>
                         <div class="brand-sub">HUMAN RESOURCES</div>

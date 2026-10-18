@@ -37,14 +37,11 @@
             text-align: center;
             border-bottom: 1px solid #F3F4F6;
         }
-        .login-badge {
+        .login-mark {
             width: 62px; height: 62px;
-            background: var(--alma);
-            color: #fff;
-            border-radius: 16px;
-            display: inline-flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 30px;
             margin-bottom: 16px;
+            border-radius: 50%;
+            box-shadow: 0 4px 14px rgba(139,37,30,.25);
         }
         .login-header h4 { font-weight: 800; margin: 0; color: #1F2937; letter-spacing: .5px; }
         .login-header p { color: var(--gray-500); font-size: 13px; margin: 6px 0 0; letter-spacing: 2px; }
@@ -78,7 +75,10 @@
 <body>
     <div class="login-container">
         <div class="login-header">
-            <div class="login-badge">A</div>
+            <svg class="login-mark" viewBox="0 0 40 40" aria-label="Alma">
+            <circle cx="20" cy="20" r="20" fill="#D42B1E"/>
+            <path d="M20 8 L33 34 H26.5 L20 18.5 L13.5 34 H7 Z" fill="#fff"/>
+        </svg>
             <h4>ALMA HR</h4>
             <p>HUMAN RESOURCES</p>
         </div>
