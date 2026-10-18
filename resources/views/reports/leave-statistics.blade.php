@@ -222,21 +222,17 @@
                     $annualDays = $annualType['days'] ?? 0;
                     $sickDays = $sickType['days'] ?? 0;
                 @endphp
-                <div class="row text-center mb-4">
+                <div class="row mb-4">
                     <div class="col-md-6">
-                        <div class="card bg-success text-white">
-                            <div class="card-body">
-                                <h4>{{ $annualDays }}</h4>
-                                <p class="mb-0">Annual Leave Days</p>
-                            </div>
+                        <div class="stat-card">
+                            <div class="stat-icon alma"><i class="fas fa-umbrella-beach"></i></div>
+                            <div><div class="stat-num">{{ $annualDays }}</div><div class="stat-lbl">Annual Leave Days</div></div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card bg-warning text-white">
-                            <div class="card-body">
-                                <h4>{{ $sickDays }}</h4>
-                                <p class="mb-0">Sick Leave Days</p>
-                            </div>
+                        <div class="stat-card">
+                            <div class="stat-icon slate"><i class="fas fa-heartbeat"></i></div>
+                            <div><div class="stat-num">{{ $sickDays }}</div><div class="stat-lbl">Sick Leave Days</div></div>
                         </div>
                     </div>
                 </div>
@@ -247,9 +243,7 @@
                         <tr>
                             <th>Month</th>
                             <th>Annual</th>
-                            <th>Annual Bar</th>
                             <th>Sick</th>
-                            <th>Sick Bar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -265,18 +259,8 @@
                         @endphp
                         <tr>
                             <td>{{ $months[$m-1] }}</td>
-                            <td>{{ $annualCount }}</td>
-                            <td>
-                                <div class="progress" style="height: 15px;">
-                                    <div class="progress-bar bg-success" style="width: {{ ($annualCount / $maxVal) * 100 }}%"></div>
-                                </div>
-                            </td>
-                            <td>{{ $sickCount }}</td>
-                            <td>
-                                <div class="progress" style="height: 15px;">
-                                    <div class="progress-bar bg-warning" style="width: {{ ($sickCount / $maxVal) * 100 }}%"></div>
-                                </div>
-                            </td>
+                            <td><span class="badge" style="background: #FAF1F0; color: #8B251E;">{{ $annualCount }}</span></td>
+                            <td><span class="badge" style="background: #F1F5F9; color: #64748B;">{{ $sickCount }}</span></td>
                         </tr>
                         @endfor
                     </tbody>
@@ -313,7 +297,6 @@
                                     <th>Employees</th>
                                     <th>Leave Days</th>
                                     <th>Avg/Employee</th>
-                                    <th>Visual</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -324,11 +307,6 @@
                                     <td>{{ $dept['count'] }}</td>
                                     <td>{{ $dept['days'] }}</td>
                                     <td>{{ $avg }}</td>
-                                    <td>
-                                        <div class="progress" style="height: 15px;">
-                                            <div class="progress-bar bg-info" style="width: {{ ($dept['days'] / $maxDeptDays) * 100 }}%"></div>
-                                        </div>
-                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
