@@ -44,6 +44,13 @@
             gap: 8px;
         }
         .sidebar .brand-sub { font-size: 10.5px; color: rgba(255,255,255,.6); letter-spacing: 2.5px; font-weight: 600; }
+        .sidebar .brand-logo-wrap {
+            background: #fff;
+            border-radius: 10px;
+            padding: 8px 14px;
+            display: inline-block;
+            box-shadow: 0 2px 8px rgba(0,0,0,.2);
+        }
         .sidebar nav { padding: 10px; }
         .sidebar a {
             color: rgba(255,255,255,.82);
@@ -222,7 +229,9 @@
             <!-- Sidebar -->
             <div class="col-md-2 sidebar p-0">
                 <div class="brand">
-                    @include('partials.alma-logo', ['height' => 38])
+                    <div class="brand-logo-wrap">
+                        @include('partials.alma-logo', ['height' => 34])
+                    </div>
                     <div class="brand-sub">HR SYSTEM</div>
                 </div>
                 <nav>
@@ -270,7 +279,7 @@
                             <i class="fas fa-chart-pie"></i> Department
                         </a>
                         <a href="{{ route('reports.employee') }}" class="{{ request()->routeIs('reports.employee') ? 'active' : '' }}">
-                            <i class="fas fa-chart-user"></i> Employee
+                            <i class="fas fa-id-card"></i> Employee
                         </a>
                         <a href="{{ route('reports.leave-statistics') }}" class="{{ request()->routeIs('reports.leave-statistics') ? 'active' : '' }}">
                             <i class="fas fa-chart-line"></i> Statistics
