@@ -35,13 +35,13 @@
         .login-header {
             padding: 34px 36px 26px;
             text-align: center;
-            background: linear-gradient(135deg, var(--alma-darker) 0%, var(--alma-dark) 60%, var(--alma) 100%);
+            border-bottom: 1px solid #F3F4F6;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 10px;
         }
-        .login-header p { color: rgba(255,255,255,.7); font-size: 11.5px; margin: 0; letter-spacing: 3px; font-weight: 600; }
+        .login-header p { color: var(--gray-500); font-size: 11.5px; margin: 0; letter-spacing: 3px; font-weight: 600; }
         .login-body { padding: 32px 36px 36px; }
         .form-label { font-weight: 600; font-size: 13.5px; color: #374151; }
         .form-control {
@@ -72,7 +72,7 @@
 <body>
     <div class="login-container">
         <div class="login-header">
-            @include('partials.alma-logo', ['height' => 52])
+            @include('partials.alma-logo', ['height' => 56])
             <p>HR SYSTEM</p>
         </div>
         <div class="login-body">
