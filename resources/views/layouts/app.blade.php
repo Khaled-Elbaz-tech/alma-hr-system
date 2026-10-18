@@ -219,6 +219,27 @@
         a:hover { color: var(--alma-hover); }
         .text-primary { color: var(--alma) !important; }
         .section-title { font-weight: 700; font-size: 16px; margin-bottom: 14px; color: var(--gray-900); }
+
+        /* ---------- Alma stat cards (override Bootstrap colors) ---------- */
+        .card.bg-primary { background: linear-gradient(135deg, #8B251E 0%, #5F1812 100%) !important; border: none; }
+        .card.bg-success { background: linear-gradient(135deg, #1E7E4C 0%, #14532D 100%) !important; border: none; }
+        .card.bg-warning { background: linear-gradient(135deg, #64748B 0%, #475569 100%) !important; border: none; }
+        .card.bg-danger { background: linear-gradient(135deg, #C0392B 0%, #922B21 100%) !important; border: none; }
+        .card.bg-info { background: linear-gradient(135deg, #475569 0%, #334155 100%) !important; border: none; }
+        .card.bg-secondary { background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%) !important; border: none; }
+        .card.bg-primary, .card.bg-success, .card.bg-warning,
+        .card.bg-danger, .card.bg-info, .card.bg-secondary {
+            border-radius: 14px;
+            box-shadow: 0 4px 14px rgba(0,0,0,.10);
+        }
+        .card.bg-primary .card-body, .card.bg-success .card-body, .card.bg-warning .card-body,
+        .card.bg-danger .card-body, .card.bg-info .card-body, .card.bg-secondary .card-body {
+            padding: 22px;
+        }
+        .card.bg-primary h4, .card.bg-success h4, .card.bg-warning h4,
+        .card.bg-danger h4, .card.bg-info h4, .card.bg-secondary h4 {
+            font-weight: 800; font-size: 28px; margin-bottom: 4px;
+        }
     </style>
     @yield('styles')
 </head>
