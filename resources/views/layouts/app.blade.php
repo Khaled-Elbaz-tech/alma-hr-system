@@ -30,6 +30,9 @@
         }
 
         /* ---------- Sidebar ---------- */
+        .sidebar-fixed {
+            width: 210px; flex: 0 0 210px;
+        }
         .sidebar {
             min-height: 100vh;
             background: linear-gradient(180deg, var(--alma-darker) 0%, var(--alma-dark) 45%, var(--alma) 100%);
@@ -51,7 +54,8 @@
             display: inline-block;
             box-shadow: 0 2px 8px rgba(0,0,0,.2);
         }
-        .sidebar nav { padding: 10px; }
+        .sidebar nav { padding: 8px; }
+        .sidebar a { font-size: 13.5px; padding: 9px 12px; }
         .sidebar a {
             color: rgba(255,255,255,.82);
             text-decoration: none;
@@ -248,7 +252,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <div class="col-md-2 sidebar p-0">
+            <div class="sidebar sidebar-fixed p-0">
                 <div class="brand">
                     <div class="brand-logo-wrap">
                         @include('partials.alma-logo', ['height' => 34])
@@ -350,7 +354,7 @@
             </div>
 
             <!-- Main Content -->
-            <div class="col-md-10 main-content">
+            <div class="main-content flex-fill">
                 <div class="topbar">
                     <h4>@yield('page-title', 'Dashboard')</h4>
                     <div class="user-chip">

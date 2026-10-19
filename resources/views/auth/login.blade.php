@@ -43,17 +43,15 @@
                 radial-gradient(circle at 85% 15%, rgba(255,255,255,.12), transparent 45%),
                 radial-gradient(circle at 10% 90%, rgba(255,255,255,.07), transparent 40%);
         }
-        .login-brand .logo-circle {
-            width: 110px; height: 110px;
-            border-radius: 50%;
+        .login-brand .logo-pill {
             background: #fff;
-            padding: 14px;
+            border-radius: 16px;
+            padding: 12px 22px;
             box-shadow: 0 18px 45px rgba(0,0,0,.35);
             position: relative; z-index: 1;
-            display: flex; align-items: center; justify-content: center;
-            overflow: hidden;
+            display: inline-block;
         }
-        .login-brand .logo-circle img { max-width: 100%; max-height: 100%; }
+        .login-brand .logo-pill img { display: block; }
         .login-brand h1 { font-size: 34px; margin: 26px 0 6px; position: relative; z-index: 1; font-weight: 800; }
         .login-brand .tagline { color: #E2E8F0; letter-spacing: 5px; font-size: 12px; font-weight: 600; position: relative; z-index: 1; }
         .login-brand p.desc { margin-top: 22px; line-height: 1.9; color: #F1F5F9; max-width: 460px; position: relative; z-index: 1; font-size: 15px; }
@@ -131,8 +129,8 @@
 </head>
 <body>
     <div class="login-brand">
-        <div class="logo-circle">
-            @include('partials.alma-logo', ['height' => 72])
+        <div class="logo-pill">
+            @include('partials.alma-logo', ['height' => 58])
         </div>
         <h1>HR Management System</h1>
         <div class="tagline">MORE THAN A JOURNEY</div>
