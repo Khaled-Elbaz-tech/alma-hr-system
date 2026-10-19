@@ -282,6 +282,9 @@
                         <a href="{{ route('leaves.index') }}" class="{{ request()->routeIs('leaves.index') ? 'active' : '' }}">
                             <i class="fas fa-calendar"></i> Leave Requests
                         </a>
+                        <a href="{{ route('leaves.calendar') }}" class="{{ request()->routeIs('leaves.calendar') ? 'active' : '' }}">
+                            <i class="fas fa-calendar-alt"></i> Leave Calendar
+                        </a>
                         <a href="{{ route('holidays.index') }}" class="{{ request()->routeIs('holidays.*') ? 'active' : '' }}">
                             <i class="fas fa-calendar-week"></i> Holidays
                         </a>
@@ -313,6 +316,9 @@
                         </a>
                         <a href="{{ route('leaves.manager.index') }}" class="{{ request()->routeIs('leaves.manager*') ? 'active' : '' }}">
                             <i class="fas fa-calendar"></i> Leave Requests
+                        </a>
+                        <a href="{{ route('leaves.calendar') }}" class="{{ request()->routeIs('leaves.calendar') ? 'active' : '' }}">
+                            <i class="fas fa-calendar-alt"></i> Leave Calendar
                         </a>
                     @endif
 

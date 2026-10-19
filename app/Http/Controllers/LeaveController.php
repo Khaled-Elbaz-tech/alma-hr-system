@@ -6,6 +6,7 @@ use App\Models\LeaveRequest;
 use App\Models\LeaveType;
 use App\Models\Employee;
 use App\Models\Holiday;
+use App\Models\Department;
 use App\Models\ActivityLog;
 use App\Models\LeaveYear;
 use App\Services\LeaveCalculationService;
@@ -949,5 +950,71 @@ class LeaveController extends Controller
         $leaveRequests = $query->paginate(20);
 
         return view('leaves.manager-index', compact('leaveRequests'));
+    }
+
+    /**
+     * Team leave calendar — monthly view of who is on leave.
+     * Managers/employees are scoped to their own department.
+     */
+    public function calendar(Request $request)
+    {
+        $user = Auth::user();
+        $role = $user->role->name ?? '';
+        $employee = $user->employee;
+
+        $month = $request->get('month', now()->format('Y-m'));
+        try {
+            $start = Carbon::createFromFormat('Y-m', $month)->startOfMonth();
+        } catch (\Exception $e) {
+            $start = now()->startOfMonth();
+        }
+        $month = $start->format('Y-m');
+        $end = $start->copy()->endOfMonth();
+
+        // Department scope: managers, dms and employees only see their own department
+        $scopedDeptId = null;
+        if (in_array($role, ['manager', 'dm', 'employee']) && $employee) {
+            $scopedDeptId = $employee->department_id;
+        }
+        $filterDeptId = $scopedDeptId ?: ($request->filled('department_id') ? (int) $request->department_id : null);
+
+        $query = LeaveRequest::with(['employee.user', 'employee.department', 'leaveType'])
+            ->whereNotIn('status', ['rejected', 'cancelled'])
+            ->whereDate('start_date', '<=', $end->toDateString())
+            ->whereDate('end_date', '>=', $start->toDateString());
+
+        if ($filterDeptId) {
+            $query->whereHas('employee', fn($q) => $q->where('department_id', $filterDeptId));
+        }
+
+        $leaves = $query->get();
+
+        // Build date => leaves map for the month
+        $days = [];
+        for ($d = $start->copy(); $d->lte($end); $d->addDay()) {
+            $days[$d->toDateString()] = [];
+        }
+        foreach ($leaves as $leave) {
+            $ls = Carbon::parse($leave->start_date);
+            if ($ls->lt($start)) $ls = $start->copy();
+            $le = Carbon::parse($leave->end_date);
+            if ($le->gt($end)) $le = $end->copy();
+            for ($d = $ls->copy(); $d->lte($le); $d->addDay()) {
+                $days[$d->toDateString()][] = $leave;
+            }
+        }
+
+        $holidays = Holiday::whereDate('start_date', '<=', $end->toDateString())
+            ->whereDate('end_date', '>=', $start->toDateString())
+            ->get();
+
+        $departments = Department::orderBy('name')->get();
+        $prevMonth = $start->copy()->subMonth()->format('Y-m');
+        $nextMonth = $start->copy()->addMonth()->format('Y-m');
+
+        return view('leaves.calendar', compact(
+            'days', 'start', 'end', 'month', 'holidays', 'departments',
+            'filterDeptId', 'prevMonth', 'nextMonth', 'scopedDeptId'
+        ));
     }
 }
