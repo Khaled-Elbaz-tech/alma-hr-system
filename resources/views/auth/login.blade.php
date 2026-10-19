@@ -25,13 +25,13 @@
         }
         /* --- Brand panel --- */
         .login-brand {
-            flex: 1;
+            flex: 0 0 38%;
             background: linear-gradient(150deg, var(--alma-darker) 0%, var(--alma-dark) 55%, var(--alma) 100%);
             color: #fff;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 60px;
+            padding: 48px 40px;
             position: relative;
             overflow: hidden;
         }
