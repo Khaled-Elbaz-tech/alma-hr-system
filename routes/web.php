@@ -123,3 +123,5 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/', function () {
     return redirect('/login');
 });
+
+
