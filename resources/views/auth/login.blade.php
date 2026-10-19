@@ -45,11 +45,13 @@
         }
         .login-brand .logo-pill {
             background: #fff;
-            border-radius: 16px;
-            padding: 12px 22px;
+            border-radius: 14px;
+            padding: 10px 18px;
             box-shadow: 0 18px 45px rgba(0,0,0,.35);
             position: relative; z-index: 1;
             display: inline-block;
+            align-self: flex-start;
+            max-width: 100%;
         }
         .login-brand .logo-pill img { display: block; }
         .login-brand h1 { font-size: 34px; margin: 26px 0 6px; position: relative; z-index: 1; font-weight: 800; }
